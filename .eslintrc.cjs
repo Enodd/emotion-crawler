@@ -1,18 +1,75 @@
 module.exports = {
-  root: true,
-  env: { browser: true, es2020: true },
-  extends: [
+  env: { browser: true, es2021: true },
+  'extends': [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended'
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
-  rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+  'parser': '@typescript-eslint/parser',
+  'parserOptions': {
+    'ecmaFeatures': { 'jsx': true },
+    'ecmaVersion': 'latest',
+    'sourceType': 'module'
   },
-}
+  'plugins': [
+    'react',
+    '@typescript-eslint'
+  ],
+  'overrides': [
+    {
+      'files': ['*.ts'],
+      'rules': { 'no-unused-vars': 'off' }
+    }
+  ],
+  rules: {
+    'object-curly-spacing': ['error', 'always'],
+    'object-curly-newline': [
+      'error',
+      {
+        'ObjectExpression': {
+          'multiline': true,
+          'minProperties': 3
+        },
+        'ObjectPattern': {
+          'multiline': false,
+          'minProperties': 5
+        },
+        'ImportDeclaration': 'never',
+        'ExportDeclaration': {
+          'multiline': true,
+          'minProperties': 3
+        }
+      }
+    ],
+    'linebreak-style': [
+      'error',
+      'unix'
+    ],
+    'quotes': [
+      'error',
+      'single'
+    ],
+    'semi': [
+      'error',
+      'always'
+    ],
+    'comma-dangle': [
+      'error',
+      {
+        'arrays': 'only-multiline',
+        'objects': 'only-multiline',
+        'imports': 'never',
+        'exports': 'never',
+        'functions': 'never'
+      }
+    ],
+    'camelcase': [
+      'error',
+      { 'ignoreImports': true }
+    ],
+    'react/display-name': 'off',
+    'no-undef': 'off',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-define': ['error']
+  },
+};

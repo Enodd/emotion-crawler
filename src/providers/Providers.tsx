@@ -4,5 +4,5 @@ import React, { PropsWithChildren } from 'react';
 export const Providers: React.FC<PropsWithChildren> = ({ children }) => {
     return <ChakraProvider>
         {children}
-    </ChakraProvider>
-}
+    </ChakraProvider>;
+};
