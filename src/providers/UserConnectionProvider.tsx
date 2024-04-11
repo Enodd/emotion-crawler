@@ -3,7 +3,8 @@ import { AccountState, User } from "@models/UserModel";
 import dayjs from "dayjs";
 import React, { createContext } from "react";
 
-const UserConnectionContext = createContext<User>({
+const defaultValues: { user: User; setUser: (user?: User) => void } = {
+  user: {
     userId: -1,
     email: "",
     userName: "",
@@ -19,13 +20,26 @@ const UserConnectionContext = createContext<User>({
     currencyP: "",
     lastLogin: dayjs(),
     loginStreak: "",
-    isLoggedIn: false
-})
+    isLoggedIn: false,
+    JWTToken: "",
+  },
+  setUser: () => {},
+};
+export const UserConnectionContext = createContext<{
+  user: User;
+  setUser: (user?: User) => void;
+}>(defaultValues);
 
-export const UserConnectionProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-    const { user } = useUserLogin();
+export const UserConnectionProvider: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
+  const { user, setUser } = useUserLogin();
 
-    return <UserConnectionContext.Provider value={user}>
-        {children}
+  return (
+    <UserConnectionContext.Provider
+      value={{ user: user || defaultValues.user, setUser }}
+    >
+      {children}
     </UserConnectionContext.Provider>
-}
+  );
+};

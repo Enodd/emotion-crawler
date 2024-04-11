@@ -13,11 +13,20 @@ export const MainScreenLayout: React.FC<React.PropsWithChildren> = ({
         height={"100vh"}
         display={"flex"}
         flexDir={"column"}
-        gap={2}
-        justifyContent={"center"}
         alignItems={"center"}
         backgroundImage={BackgroundImage}
         backgroundSize={"cover"}
+        position={"relative"}
+        sx={{
+          _after: {
+            content: '""',
+            width: "100%",
+            height: "100%",
+            background: "#0004",
+            position: "absolute",
+            zIndex: 0,
+          },
+        }}
       >
         {children}
       </Box>

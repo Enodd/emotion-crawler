@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
@@ -23,41 +19,20 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "./src/",
     "paths": {
-      "@assets/*": [
-        "assets/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ],
-      "@constants/*": [
-        "constants/*"
-      ],
-      "@hooks/*": [
-        "hooks/*"
-      ],
-      "@configs/*": [
-        "configs/*"
-      ],
-      "@layout/*": [
-        "layout/*"
-      ],
-      "@models/*": [
-        "models/*"
-      ],
-      "@providers/*": [
-        "providers/*"
-      ],
-      "@theme/*": [
-        "theme/*"
-      ],
-      "@views/*": [
-        "views/*"
-      ]
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@hooks/*": ["hooks/*"],
+      "@configs/*": ["configs/*"],
+      "@layout/*": ["layout/*"],
+      "@models/*": ["models/*"],
+      "@providers/*": ["providers/*"],
+      "@storage/*": ["storage/*"],
+      "@theme/*": ["theme/*"],
+      "@views/*": ["views/*"]
     }
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "references": [
     {
       "path": "./tsconfig.node.json"
