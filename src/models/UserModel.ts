@@ -12,7 +12,7 @@ export interface ResponseUser {
   email: string;
   userName: string;
   birthYear: string;
-  sex: "male" | "female";
+  sex: boolean;
   education: string;
   pastHealthIssues: string;
   accountState: AccountState;
@@ -23,11 +23,20 @@ export interface ResponseUser {
   currencyP: string;
   loginStreak: string;
   lastLogin: string;
-  JWTToken: string;
+  userHp: number;
+  nextHpRenewal: string;
 }
 
-export interface User extends Omit<ResponseUser, "birthYear" | "lastLogin"> {
+export interface User
+  extends Omit<
+    ResponseUser,
+    "birthYear" | "lastLogin" | "sex" | "nextHpRenewal"
+  > {
+  sex: "male" | "female";
   birthYear: Dayjs;
   lastLogin: Dayjs;
   isLoggedIn: boolean;
+  JWTToken: string;
+  nextHpRenewal: Dayjs;
+  lostHp: number;
 }

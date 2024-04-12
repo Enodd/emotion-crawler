@@ -11,17 +11,19 @@ const MotionImage = motion(Image);
 
 export const Header: React.FC = () => {
   const { t } = useTranslation();
-  const { user } = useUserProvider();
+  const { user, setUser } = useUserProvider();
   const { logout } = useUserLogin();
   const navigate = useNavigate();
   const handleLoginAction = () => {
     if (user.isLoggedIn) {
-      logout();
+      logout().then(() => {
+        setUser(undefined);
+        navigate("/");
+      });
       return;
     }
     navigate("/login");
   };
-
   return (
     <HStack
       w={"100vw"}
@@ -32,7 +34,7 @@ export const Header: React.FC = () => {
       zIndex={10}
     >
       <Box>
-        <Link href={"/"}>
+        <Link href={user.isLoggedIn ? "/home" : "/"}>
           <MotionImage
             src={Logo}
             alt={"Website logo presenting blank face"}

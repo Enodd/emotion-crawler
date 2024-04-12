@@ -1,3 +1,5 @@
+import { Dungeon } from "@views/Dungeon/Dungeon";
+import { LoggedUserScreen } from "@views/LoggedUser/LoggedUserScreen";
 import { LoginPage } from "@views/MainScreen/Login";
 import { MainScreen } from "@views/MainScreen/MainScreen";
 import { RegisterPage } from "@views/MainScreen/Register";
@@ -8,6 +10,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainScreen />,
+  },
+  {
+    path: "/home",
+    element: <LoggedUserScreen />,
+  },
+  {
+    path: "/dungeon",
+    element: <Dungeon />,
   },
   {
     path: "/login",

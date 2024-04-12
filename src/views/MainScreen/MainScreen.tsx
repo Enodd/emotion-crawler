@@ -12,7 +12,7 @@ export const MainScreen: React.FC = () => {
   const { user } = useUserProvider();
 
   if (user?.isLoggedIn) {
-    return <>User is logged in</>;
+    navigate("/home");
   }
 
   return (

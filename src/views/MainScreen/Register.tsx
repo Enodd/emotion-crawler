@@ -42,7 +42,12 @@ export const RegisterPage: React.FC = () => {
     },
   });
   const email = register("email");
-  const pass = register("password");
+  const pass = register("password", {
+    validate: {
+      isTheSame: (value) =>
+        value === pass2Val ? undefined : t("form.passwordDifferent"),
+    },
+  });
   const pass2 = register("password2");
   const birthYear = register("birthYear");
   const gender = register("gender");
@@ -59,8 +64,8 @@ export const RegisterPage: React.FC = () => {
   const handleSubmit = async () => {
     try {
       await registerUser(
-        loginVal,
         emailVal,
+        loginVal,
         passVal,
         birthYearVal,
         genderVal,

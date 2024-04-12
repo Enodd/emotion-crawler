@@ -23,15 +23,11 @@ export const LoginPage: React.FC = () => {
   const loginVal = watch("login");
   const passVal = watch("password");
 
-  useEffect(() => {
-    console.log(loginVal, passVal);
-  }, [loginVal, passVal]);
-
   const handleLogin = async () => {
     try {
       const data = await getUserLogin(loginVal, passVal);
       setUser(data);
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       console.error(err);
     }
